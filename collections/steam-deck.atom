@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://www.gamers-stop.com/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://www.gamers-stop.com/collections/steam-deck.atom"/>
+  <title>Gamers Stop</title>
+  <updated>2026-10-08T00:31:04+03:00</updated>
+  <author>
+    <name>Gamers Stop</name>
+  </author>
+  <entry>
+    <id>https://www.gamers-stop.com/products/9367313645790</id>
+    <published>2026-10-08T00:31:04+03:00</published>
+    <updated>2026-10-08T00:31:04+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/steam-controller-2nd-gen-2026"/>
+    <title>Steam Controller 2nd Gen 2026</title>
+    <s:type>Video Game Console Accessories</s:type>
+    <s:vendor>Steam</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/rn-image_picker_lib_temp_5d1e67b6-1339-451f-8b70-0025bd483ceb.jpg?v=1791408496"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Steam<br>
+        <strong>Type: </strong>Video Game Console Accessories<br>
+        <strong>Price: </strong>
+            200.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><section data-section-id="template--28711201145203__main" data-section-type="product" data-section-settings='{
+  "showShippingEstimator": false,
+  "galleryTransitionEffect": "fade",
+  "enableImageZoom": true,
+  "zoomEffect": "outside",
+  "enableVideoLooping": false,
+  "productOptions": ["Title"],
+  "infoOverflowScroll": true,
+  "isQuickView": false
+}'>
+<div class="container container--flush">
+<div class="product-block-list">
+<div class="product-block-list__item product-block-list__item--description">
+<div class="card">
+<div class="card__header">
+<h2 class="card__title heading h3"><img src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/4dsfg564sg56as4g.jpg?v=1781486854" alt=""></h2>
+</div>
+<div class="card__section ">
+<div class="rte text--pull">
+<div class="table-wrapper">
+<table width="100%">
+<tbody>
+<tr>
+<th colspan="2">System Specifications</th>
+</tr>
+<tr>
+<th colspan="2">Controls and Input</th>
+</tr>
+<tr>
+<td><strong>Gamepad controls</strong></td>
+<td>A B X Y buttons<br>D-pad<br>L &amp; R analog triggers<br>L &amp; R bumpers<br>View &amp; Menu buttons<br>Steam &amp; QAM buttons<br>4x assignable grip buttons</td>
+</tr>
+<tr>
+<td><strong>Thumbsticks</strong></td>
+<td>2x full-size magnetic thumbsticks (TMR) with capacitive touch</td>
+</tr>
+<tr>
+<td><strong>Haptics</strong></td>
+<td>4x haptic motors<br>2x LRA haptic motors in trackpads for HD tactile feedback<br>2x High output LRA haptic motors in grips for HD game haptics including rumble</td>
+</tr>
+<tr>
+<td><strong>Trackpads</strong></td>
+<td>2x 34.5mm square trackpads with haptic feedback<br>Pressure-sensitive for configurable click strength</td>
+</tr>
+<tr>
+<td><strong>Gyro</strong></td>
+<td>6-axis IMU</td>
+</tr>
+<tr>
+<td><strong>Grip Sense</strong></td>
+<td>2x capacitive areas along back of Steam Controller handles</td>
+</tr>
+<tr>
+<th colspan="2">Connectivity</th>
+</tr>
+<tr>
+<td><strong>Steam Controller Puck</strong></td>
+<td>2.4GHz Wireless connection<br>~8ms full end-to-end, 4ms polling rate (measured at 5m)<br>Up to 4 Steam Controllers per Steam Controller Puck<br>Steam Controller Puck connects to PC via USB-C</td>
+</tr>
+<tr>
+<td><strong>Bluetooth</strong></td>
+<td>Bluetooth 4.2 minimum, 5.0 or higher recommended</td>
+</tr>
+<tr>
+<td><strong>USB</strong></td>
+<td>USB-C tethered play</td>
+</tr>
+<tr>
+<th colspan="2">Power</th>
+</tr>
+<tr>
+<td><strong>Charging</strong></td>
+<td>Steam Controller Puck charging interface<br>USB-C connector</td>
+</tr>
+<tr>
+<td><strong>Battery</strong></td>
+<td>8.39 Wh Li-ion battery<br>35+ hours of gameplay*<br>Battery life for tracked gameplay with Steam Frame is reduced</td>
+</tr>
+<tr>
+<th colspan="2">Size and Weight</th>
+</tr>
+<tr>
+<td><strong>Size</strong></td>
+<td>Steam Controller: 111mm x 159mm x 57mm<br>Steam Controller Puck: 50mm x 28mm x 9mm</td>
+</tr>
+<tr>
+<td><strong>Weight</strong></td>
+<td>Steam Controller: 292 g<br>Steam Controller Puck: 16 g</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/9367313645790</id>
+      <title>Default Title</title>
+      <s:price currency="USD">200.00</s:price>
+      <s:sku/>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/8713746645214</id>
+    <published>2024-10-24T02:53:11+03:00</published>
+    <updated>2024-10-24T02:53:11+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/8bitdo-wireless-usb-adapter-2-for-switch-windows-mac-raspberry-pi-steam-deck-compatible-with-xbox-ps5-controllers"/>
+    <title>8Bitdo Wireless USB Adapter 2 for Switch, Windows, Mac, Raspberry Pi &amp; Steam Deck - Compatible with Xbox, PS5 Controllers</title>
+    <s:type>Video Game Console Accessories</s:type>
+    <s:vendor>8BitDo</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/PhotoGrid-Plus_1729727220478.jpg?v=1729727596"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>8BitDo<br>
+        <strong>Type: </strong>Video Game Console Accessories<br>
+        <strong>Price: </strong>
+            20.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><div class="a-cardui feature" data-a-card-type="basic" name="a-cardui-deck-autoname-6-card1" data-cel-widget="">
+<div id="aplus_feature_div" data-feature-name="aplus" data-template-name="aplus" class="a-section a-spacing-none">
+<h3><img alt="8Bitdo Wireless USB Adapter 2 for Switch Switch OLED Windows  Mac Raspberry Pi" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/5d0ad597-d254-467b-ad2b-bc9d2ef6f32d.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/5d0ad597-d254-467b-ad2b-bc9d2ef6f32d.__CR0,0,970,600_PT0_SX970_V1___.jpg"></h3>
+<div class="aplus-v2 mobile celwidget" cel_widget_id="m-aplus" data-csa-c-id="jzsvgq-v0s6la-jzq6l-lrjrnc" data-cel-widget="m-aplus">
+<div class="celwidget aplus-module 3p-module-b aplus-standard" cel_widget_id="aplus-m-3p-module-b" data-csa-c-id="ybmrsm-l2f45-rha2tm-blepv4" data-cel-widget="aplus-m-3p-module-b">
+<div class="aplus-3p-center-content"><img alt="wireless controller adapter for Xbox Series X Controller adapter " src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/21efc68e-cb00-4047-9138-efead3229e30.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/21efc68e-cb00-4047-9138-efead3229e30.__CR0,0,970,600_PT0_SX970_V1___.jpg"></div>
+</div>
+<div class="celwidget aplus-module 3p-module-b aplus-standard" cel_widget_id="aplus-m-3p-module-b" data-csa-c-id="1oxjl4-wi0uk5-2fkjyf-f611nc" data-cel-widget="aplus-m-3p-module-b">
+<div class="aplus-3p-center-content"><img alt="Xbox Series X Controller adapter Xbox One adaptrer Switch Pro gamepad adapter PS5 Controller " src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f345e56e-d44e-4c91-9b29-bedd21298b1f.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f345e56e-d44e-4c91-9b29-bedd21298b1f.__CR0,0,970,600_PT0_SX970_V1___.jpg"></div>
+</div>
+<div class="celwidget aplus-module 3p-module-b aplus-standard" cel_widget_id="aplus-m-3p-module-b" data-csa-c-id="iffi89-xeummy-5dk21e-xw4nvj" data-cel-widget="aplus-m-3p-module-b">
+<div class="aplus-3p-center-content"><img alt="Xbox Series S Controller adapter Xbox One adaptrer for Switch Pro gamepad usb adapter" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/58beb71e-f9f1-435d-a1e5-db00909b4804.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/58beb71e-f9f1-435d-a1e5-db00909b4804.__CR0,0,970,600_PT0_SX970_V1___.jpg"></div>
+</div>
+<div class="celwidget aplus-module 3p-module-b aplus-standard" cel_widget_id="aplus-m-3p-module-b" data-csa-c-id="broccb-ut1ym8-e3lipb-m0g4po" data-cel-widget="aplus-m-3p-module-b">
+<div class="aplus-3p-center-content"><img alt="8Bitdo Wireless USB Adapter 2 for Switch/Switch OLED, Windows, Mac &amp; Raspberry Pi," src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/509c091c-54ad-4cfd-b38c-215dc5c7f234.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/509c091c-54ad-4cfd-b38c-215dc5c7f234.__CR0,0,970,600_PT0_SX970_V1___.jpg"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="a-cardui feature" data-a-card-type="basic" name="a-cardui-deck-autoname-6-card2" data-cel-widget="">
+<div id="featureBulletsAndDetailBullets_feature_div" data-feature-name="featureBulletsAndDetailBullets" data-template-name="featureBulletsAndDetailBullets" class="a-section a-spacing-none">
+<h3>Features &amp; details</h3>
+<div id="featurebullets_secondary_view_div" class="a-section">
+<div id="feature-bullets" class="a-section a-spacing-small">
+<ul class="a-unordered-list a-vertical a-spacing-none">
+<li class="a-spacing-mini"><span class="a-list-item">8BitDo Controller compatibility: all 8BitDo Bluetooth Controllers and arcade stick.</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">System compatibility: Switch, Windows, macOS, Steam Deck &amp; Raspberry Pis and more. USB Wireless Adapter 2 is compatible with Steam Deck now.</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Support 6-axis motion on Switch and Vibration on X-input mode.</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Supports ultimate software - customize button mapping, adjust stick &amp; trigger sensitivity, vibration control and create macros with any button combination.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/8713746645214</id>
+      <title>Default Title</title>
+      <s:price currency="USD">20.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/8250817544414</id>
+    <published>2024-01-11T00:30:26+02:00</published>
+    <updated>2024-01-11T00:30:26+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/valve-steam-deck-oled-512gb"/>
+    <title>Valve Steam Deck OLED - 512GB</title>
+    <s:type>Video Game Consoles</s:type>
+    <s:vendor>Valve</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/PhotoGrid-Plus_1704925264529_5707167e-b159-4701-80ee-905fa2a77184.jpg?v=1704925838"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Valve<br>
+        <strong>Type: </strong>Video Game Consoles<br>
+        <strong>Price: </strong>
+            900.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p><span>Stunning HDR OLED display Immerse yourself in the gaming world with the HDR OLED display revealing brighter whites and richer blacks. Designed for gaming enthusiasts, the striking contrast, brilliant clarity, and larger screen size redefine your gameplay, bringing vivid colors and motion to life. Anti-glare technology The 512GB model features anti-glare etched glass, setting a new level of eye comfort for gamers. The game seamlessly in both bright and dim lighting without distracting glares and reflections. Adding a layer of sophistication to the device, the glass provides a premium touch to your gaming sessions. Bonus carrying case The 1TB models come bundled with a carrying case that features a removable liner. Ideal for when you want to throw it into your backpack, this liner protects the Steam Deck without the need for a hard case or its bulkiness. The perfect option for gamers on the go! Revamped internals With the new Steam Deck OLED, we’ve upgraded our systems to deliver a gaming powerhouse with extended gaming time and super-smooth gameplay. Enjoy long gaming sessions thanks to the OLED display’s increased energy efficiency and its larger battery boasting 30-50% more battery life. Plus, the high-performance AMD APU ensures your games run seamlessly without interruptions. Faster downloads Experience lightning-fast downloads with this console’s integrated Wi-Fi 6E technology. Equipped with increased bandwidth and lower latency, this console provides up to 3 times faster download speeds and steady online play. Better touch-screen The touchscreen polling rate has been updated to 180Hz, improving its responsiveness and accuracy. Every touch or gesture is detected with precision for more fluid, fast-paced gameplay. Plus, with redesigned analog sticks, delivering precision and comfort, your gaming interactions will soar to new heights. High-performance storage Secure the necessary built-in storage with a high-speed 512GB NVMe SSD. If you need more space, expand your internal storage by using a microSD card and load it with additional games. Lighter, cooler Weighing 30g less than the LCD model, thanks to the lighter screen, the Steam Deck OLED enhances the overall gaming experience. The bigger fan and updated thermals also mean this gaming console runs cooler.</span></p>
+<h3>Features &amp; details</h3>
+<div id="featurebullets_secondary_view_div" class="a-section">
+<div id="feature-bullets" class="a-section a-spacing-small">
+<ul class="a-unordered-list a-vertical a-spacing-none">
+<li class="a-spacing-mini"><span class="a-list-item">512GB NVMe SSD</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">1280 x 800 HDR OLED display with premium anti-glare etched glass, 7.4" Diagonal display size up to 90Hz refresh rate</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Wi-Fi 6E</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">50Whr battery; 3-12 hours of gameplay (content-dependent)</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Carrying case with removable liner</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Exclusive startup movie</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Exclusive virtual keyboard theme</span></li>
+</ul>
+</div>
+</div></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/8250817544414</id>
+      <title>Default Title</title>
+      <s:price currency="USD">900.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/8250810728670</id>
+    <published>2024-01-11T00:26:36+02:00</published>
+    <updated>2024-01-11T00:26:36+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/valve-steam-deck-oled-1tb"/>
+    <title>Valve Steam Deck OLED - 1TB</title>
+    <s:type>Video Game Consoles</s:type>
+    <s:vendor>Valve</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/PhotoGrid-Plus_1704925264529.jpg?v=1704925639"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Valve<br>
+        <strong>Type: </strong>Video Game Consoles<br>
+        <strong>Price: </strong>
+            1000.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p><span>Stunning HDR OLED display Immerse yourself in the gaming world with the HDR OLED display revealing brighter whites and richer blacks. Designed for gaming enthusiasts, the striking contrast, brilliant clarity, and larger screen size redefine your gameplay, bringing vivid colors and motion to life. Anti-glare technology The 1TB model features anti-glare etched glass, setting a new level of eye comfort for gamers. The game seamlessly in both bright and dim lighting without distracting glares and reflections. Adding a layer of sophistication to the device, the glass provides a premium touch to your gaming sessions. Bonus carrying case The 1TB models come bundled with a carrying case that features a removable liner. Ideal for when you want to throw it into your backpack, this liner protects the Steam Deck without the need for a hard case or its bulkiness. The perfect option for gamers on the go! Revamped internals With the new Steam Deck OLED, we’ve upgraded our systems to deliver a gaming powerhouse with extended gaming time and super-smooth gameplay. Enjoy long gaming sessions thanks to the OLED display’s increased energy efficiency and its larger battery boasting 30-50% more battery life. Plus, the high-performance AMD APU ensures your games run seamlessly without interruptions. Faster downloads Experience lightning-fast downloads with this console’s integrated Wi-Fi 6E technology. Equipped with increased bandwidth and lower latency, this console provides up to 3 times faster download speeds and steady online play. Better touch-screen The touchscreen polling rate has been updated to 180Hz, improving its responsiveness and accuracy. Every touch or gesture is detected with precision for more fluid, fast-paced gameplay. Plus, with redesigned analog sticks, delivering precision and comfort, your gaming interactions will soar to new heights. High-performance storage Secure the necessary built-in storage with a high-speed 1TB NVMe SSD. If you need more space, expand your internal storage by using a microSD card and load it with additional games. Lighter, cooler Weighing 30g less than the LCD model, thanks to the lighter screen, the Steam Deck OLED enhances the overall gaming experience. The bigger fan and updated thermals also mean this gaming console runs cooler.</span></p>
+<h3>Features &amp; details</h3>
+<div id="featurebullets_secondary_view_div" class="a-section">
+<div id="feature-bullets" class="a-section a-spacing-small">
+<ul class="a-unordered-list a-vertical a-spacing-none">
+<li class="a-spacing-mini"><span class="a-list-item">1TB NVMe SSD</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">1280 x 800 HDR OLED display with premium anti-glare etched glass, 7.4" Diagonal display size up to 90Hz refresh rate</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Wi-Fi 6E</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">50Whr battery; 3-12 hours of gameplay (content-dependent)</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Carrying case with removable liner</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Exclusive startup movie</span></li>
+<li class="a-spacing-mini"><span class="a-list-item">Exclusive virtual keyboard theme</span></li>
+</ul>
+</div>
+</div></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/8250810728670</id>
+      <title>Default Title</title>
+      <s:price currency="USD">1000.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/8051882655966</id>
+    <published>2023-05-31T00:32:33+03:00</published>
+    <updated>2023-05-31T00:32:33+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/dobe-steam-deck-anti-slip-dock-holder-stand"/>
+    <title>DOBE Steam Deck Anti-Slip Dock Holder Stand</title>
+    <s:type>Steam Deck Accessory</s:type>
+    <s:vendor>Dobe</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/PhotoGrid_Plus_1685482213133.jpg?v=1685482360"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Dobe<br>
+        <strong>Type: </strong>Steam Deck Accessory<br>
+        <strong>Price: </strong>
+            5.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><div id="aplus_feature_div" class="celwidget" data-feature-name="aplus" data-csa-c-type="widget" data-csa-c-content-id="aplus" data-csa-c-slot-id="aplus_feature_div" data-csa-c-asin="" data-csa-c-is-in-initial-active-row="false" data-csa-c-id="9g34qe-hw2233-pjo77o-4f4o4m" data-cel-widget="aplus_feature_div">
+<div class="a-cardui-deck dp-widget-card-deck celwidget" data-a-remove-bottom-gutter="" name="a-cardui-deck-autoname-14" data-csa-c-id="ntiy2d-kbnmcb-ieyu2n-c9009a" data-cel-widget="">
+<div class="a-cardui feature" data-a-card-type="basic" name="a-cardui-deck-autoname-14-card0" data-cel-widget="">
+<h3 class="aplus-header-class"><img alt="stand" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/5f08b803-7cd9-4d3e-b744-3bfc5121bafa.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/5f08b803-7cd9-4d3e-b744-3bfc5121bafa.__CR0,0,970,600_PT0_SX970_V1___.jpg"></h3>
+<div class="aplus-v2 mobile celwidget" cel_widget_id="m-aplus" data-csa-c-id="rymo6k-k3mdq6-kqihx1-2afjsa" data-cel-widget="m-aplus">
+<div class="celwidget aplus-module 3p-module-b aplus-standard" cel_widget_id="aplus-m-3p-module-b" data-csa-c-id="tlmtme-xyfk6m-2ciqq8-8iignv" data-cel-widget="aplus-m-3p-module-b">
+<div class="aplus-3p-center-content"><img alt="stand" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/41810737-69e5-4864-8231-86782856fc09.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/41810737-69e5-4864-8231-86782856fc09.__CR0,0,970,600_PT0_SX970_V1___.jpg"></div>
+</div>
+<div class="celwidget aplus-module 3p-module-b aplus-standard" cel_widget_id="aplus-m-3p-module-b" data-csa-c-id="a0i2cl-l2mlnh-yzrep1-69k88q" data-cel-widget="aplus-m-3p-module-b">
+<div class="aplus-3p-center-content"><img alt="stand" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/086353be-d8fe-4287-aae6-54db7917b483.__CR0,0,970,600_PT0_SX970_V1___.jpg" class="a-spacing-base" data-src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/086353be-d8fe-4287-aae6-54db7917b483.__CR0,0,970,600_PT0_SX970_V1___.jpg"></div>
+</div>
+</div>
+</div>
+</div>
+</div></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/8051882655966</id>
+      <title>Default Title</title>
+      <s:price currency="USD">5.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/8051879936222</id>
+    <published>2023-05-31T00:23:06+03:00</published>
+    <updated>2023-05-31T00:23:06+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/lucky-fox-steam-deck-hd-tempered-glass-screen-protector"/>
+    <title>Lucky Fox Steam Deck HD Tempered Glass Screen Protector</title>
+    <s:type>Steam Deck Accessory</s:type>
+    <s:vendor>Lucky Fox</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/PhotoGrid_Plus_1685481573286.jpg?v=1685481791"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Lucky Fox<br>
+        <strong>Type: </strong>Steam Deck Accessory<br>
+        <strong>Price: </strong>
+            5.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/8051879936222</id>
+      <title>Default Title</title>
+      <s:price currency="USD">5.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/8028874834142</id>
+    <published>2023-04-27T23:36:56+03:00</published>
+    <updated>2023-04-27T23:36:56+03:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/dobe-transparent-protective-case-for-steam-deck-ty-2835"/>
+    <title>Dobe Transparent Protective Case For Steam Deck (TY-2835)</title>
+    <s:type>Steam Deck Accessory</s:type>
+    <s:vendor>Dobe</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/1666002707.jpg?v=1685483217"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Dobe<br>
+        <strong>Type: </strong>Steam Deck Accessory<br>
+        <strong>Price: </strong>
+            8.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><div id="shopify-section-product-template" class="shopify-section">
+<section data-section-id="product-template" data-section-type="product" data-section-settings='{
+  "showShippingEstimator": false,
+  "showQuantitySelector": true,
+  "showPaymentButton": false,
+  "showInventoryQuantity": true,
+  "lowInventoryThreshold": 0,
+  "galleryTransitionEffect": "fade",
+  "enableImageZoom": true,
+  "zoomEffect": "outside",
+  "enableVideoLooping": false,
+  "productOptions": ["Title"],
+  "enableHistoryState": true,
+  "infoOverflowScroll": true,
+  "isQuickView": false
+}'>
+<div class="container container--flush">
+<div class="product-block-list">
+<div class="product-block-list__item product-block-list__item--description">
+<div class="card">
+<div class="card__section">
+<div class="rte text--pull">
+<p class="desc"><strong>For Steam Deck</strong></p>
+<p class="desc"><span>Product name: </span><span>Protective Case</span></p>
+<div class="jianjie">
+<p><span>Product model: TY-2835</span></p>
+<p>The Dobe Transparent Protective Case for the Steam Deck is a great way to keep your device safe and protected. The case is made of a durable plastic that will keep your device safe from scratches.</p>
+</div>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666002707.jpg?v=1676088220"></strong></p>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666006792.jpg?v=1676088230"></strong></p>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666006387.jpg?v=1676088240"></strong></p>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666000057.jpg?v=1676088254"></strong></p>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666002497.jpg?v=1676088265"></strong></p>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666003081.jpg?v=1676088277"></strong></p>
+<p><strong><img alt="" src="https://cdn.shopify.com/s/files/1/0355/8296/7943/files/1666007849.jpg?v=1676088291"></strong></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>steam deck cover</s:tag>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/8028874834142</id>
+      <title>Default Title</title>
+      <s:price currency="USD">8.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://www.gamers-stop.com/products/4926157750349</id>
+    <published>2021-02-08T22:48:13+02:00</published>
+    <updated>2021-02-08T22:48:13+02:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gamers-stop.com/products/steam-gift-cards"/>
+    <title>Steam Gift Cards</title>
+    <s:type>Gift Card</s:type>
+    <s:vendor>Gift Cards</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0272/9476/1037/files/PhotoGrid_1612816872580.jpg?v=1687050055"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Gift Cards<br>
+        <strong>Type: </strong>Gift Card<br>
+        <strong>Price: </strong>
+            12.00 - 103.00
+            <a href="https://www.gamers-stop.com/products/steam-gift-cards">(4 variants)</a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p><strong>You may receive the codes on a printed receipt, not as a card as shown in the picture</strong></p>
+<p><span>Steam Has thousands of games from Action to Indie and everything in-between. Enjoy exclusive deals, automatic game updates and other great perks. Meet new people, join game groups, form clans, chat in-game and more! With over 100 million potential friends (or enemies), the fun never stops.</span></p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/4926157750349</id>
+      <title>10$</title>
+      <s:price currency="USD">12.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/4926157750349</id>
+      <title>20$</title>
+      <s:price currency="USD">22.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/4926157750349</id>
+      <title>50$</title>
+      <s:price currency="USD">53.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://www.gamers-stop.com/products/4926157750349</id>
+      <title>100$</title>
+      <s:price currency="USD">103.00</s:price>
+      <s:sku></s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+</feed>
