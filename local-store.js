@@ -308,6 +308,7 @@
     button.className = className;
     button.dataset.localAdd = product.path;
     button.textContent = "Add to cart";
+    button.style.setProperty("transition", "none", "important");
     container.appendChild(button);
     return button;
   }
@@ -328,6 +329,7 @@
         addButton.classList.add("local-add-to-cart");
         addButton.dataset.localAdd = product.path;
         addButton.textContent = "Add to cart";
+        addButton.style.setProperty("transition", "none", "important");
       } else if (product) {
         var info = card.querySelector(".product-item__info-inner") || card.querySelector(".product-item__info");
         if (info && !info.querySelector("[data-local-add]")) {
@@ -701,6 +703,10 @@
       "html.local-search-page .search-bar__inner{display:none!important}",
       "#shopify-section-slideshow{margin-top:16px}",
       ".local-search-results h1{margin:0 0 22px;font-size:30px}",
+      ".local-search-pagination{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px;margin:28px 0}",
+      ".local-search-pagination a,.local-search-pagination span{display:inline-flex;min-width:40px;min-height:40px;align-items:center;justify-content:center;padding:8px 12px;border:1px solid #e1e3e4;color:#1e2d7d;text-decoration:none}",
+      ".local-search-pagination a:hover{border-color:#1e2d7d;background:#f3f5f6}",
+      ".local-search-pagination [aria-current=page]{border-color:#1e2d7d;background:#1e2d7d;color:#fff}",
       ".local-product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px}",
       ".local-product-card{display:flex;flex-direction:column;color:inherit;border:1px solid #e1e3e4;padding:12px;background:#fff}",
       ".local-product-card:hover{box-shadow:0 3px 14px #0002}",
@@ -708,7 +714,7 @@
       ".local-product-card img{width:100%;height:190px;object-fit:contain}",
       ".local-product-card__title{display:block;margin:10px 0;font-weight:600}",
       ".local-product-card__price{display:block;color:#db0000;font-weight:700}",
-      ".local-add-to-cart{display:block;width:100%;margin-top:10px;padding:11px 14px;border:0;background:#1e2d7d;color:#fff;font:inherit;font-weight:600;cursor:pointer}",
+      ".local-add-to-cart{display:block;width:100%;margin-top:10px;padding:11px 14px;border:0;background:#1e2d7d;color:#fff;font:inherit;font-weight:600;cursor:pointer;transition:none!important}",
       ".local-add-to-cart:hover{background:#17235f;color:#fff}",
       "button.local-add-to-cart,button.product-item__action-button.local-add-to-cart{background:#1e2d7d!important;border-color:#1e2d7d!important;color:#fff!important}",
       "button.local-add-to-cart:hover,button.product-item__action-button.local-add-to-cart:hover{background:#17235f!important;border-color:#17235f!important;color:#fff!important}",
@@ -793,6 +799,12 @@
       var secondStarts = secondTitle.indexOf(normalizedQuery) === 0 ? 0 : 1;
       return firstStarts - secondStarts || firstTitle.localeCompare(secondTitle);
     });
+    var pageSize = 24;
+    var totalPages = Math.ceil(matches.length / pageSize);
+    var requestedPage = Number(new URLSearchParams(window.location.search).get("page"));
+    var currentPage = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+    currentPage = Math.min(currentPage, Math.max(totalPages, 1));
+    var pageMatches = matches.slice((currentPage - 1) * pageSize, currentPage * pageSize);
     var main = document.querySelector("main");
     if (!main) return;
 
@@ -816,7 +828,7 @@
     } else {
       var grid = document.createElement("div");
       grid.className = "local-product-grid";
-      matches.forEach(function (product) {
+      pageMatches.forEach(function (product) {
         var card = document.createElement("article");
         card.className = "local-product-card";
         var link = document.createElement("a");
@@ -841,6 +853,42 @@
         grid.appendChild(card);
       });
       section.appendChild(grid);
+
+      if (totalPages > 1) {
+        var pagination = document.createElement("nav");
+        pagination.className = "local-search-pagination";
+        pagination.setAttribute("aria-label", "Search result pages");
+
+        if (currentPage > 1) {
+          var previous = document.createElement("a");
+          previous.href = siteUrl("search.html?q=" + encodeURIComponent(query) + "&page=" + (currentPage - 1));
+          previous.textContent = "Previous";
+          pagination.appendChild(previous);
+        }
+
+        for (var pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
+          if (pageNumber === currentPage) {
+            var activePage = document.createElement("span");
+            activePage.setAttribute("aria-current", "page");
+            activePage.textContent = String(pageNumber);
+            pagination.appendChild(activePage);
+          } else {
+            var pageLink = document.createElement("a");
+            pageLink.href = siteUrl("search.html?q=" + encodeURIComponent(query) + "&page=" + pageNumber);
+            pageLink.textContent = String(pageNumber);
+            pageLink.setAttribute("aria-label", "Page " + pageNumber);
+            pagination.appendChild(pageLink);
+          }
+        }
+
+        if (currentPage < totalPages) {
+          var next = document.createElement("a");
+          next.href = siteUrl("search.html?q=" + encodeURIComponent(query) + "&page=" + (currentPage + 1));
+          next.textContent = "Next";
+          pagination.appendChild(next);
+        }
+        section.appendChild(pagination);
+      }
     }
     main.appendChild(section);
     document.title = normalizedQuery ? "Search: " + query.trim() + " | DK Game Center" : "Search | DK Game Center";
