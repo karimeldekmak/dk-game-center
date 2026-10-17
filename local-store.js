@@ -17,6 +17,11 @@
     return new URL(String(path).replace(/^\/+/, ""), siteRoot).pathname;
   }
 
+  function isSitePage(path) {
+    return window.location.pathname === sitePath(path) ||
+      window.location.pathname === sitePath(path + ".html");
+  }
+
   function productPath(link) {
     if (!link) return "";
     var url = new URL(link.getAttribute("href"), window.location.href);
@@ -388,7 +393,7 @@
         if (item.quantity > 1) item.quantity -= 1;
         saveCart(cart);
       }
-      if (window.location.pathname === sitePath("cart.html")) renderCart();
+      if (isSitePage("cart")) renderCart();
     }, true);
 
     document.addEventListener("change", function (event) {
@@ -693,7 +698,7 @@
 
   function addStyles() {
     if (document.getElementById("local-store-styles")) return;
-    if (window.location.pathname === sitePath("search.html")) {
+    if (isSitePage("search")) {
       document.documentElement.classList.add("local-search-page");
     }
     var style = document.createElement("style");
@@ -997,9 +1002,9 @@
       document.querySelectorAll(".search-bar input[name='q']").forEach(function (input) {
         if (input.value.trim()) renderQuickResults(activeProducts, input.form, input.value);
       });
-      if (window.location.pathname === sitePath("cart.html")) {
+      if (isSitePage("cart")) {
         renderCart();
-      } else if (window.location.pathname === sitePath("search.html")) {
+      } else if (isSitePage("search")) {
         renderSearch(products);
       } else if (window.location.pathname === sitePath("product.html") ||
         (window.location.pathname === sitePath("index.html") &&
