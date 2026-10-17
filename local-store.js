@@ -149,6 +149,51 @@
     document.body.appendChild(link);
   }
 
+  function addFloatingSocialButton(platform, href, label, iconPath, iconStroke) {
+    var className = "local-social-float local-social-float--" + platform;
+    if (document.querySelector("." + className.replace(/ /g, "."))) return;
+    var link = document.createElement("a");
+    link.className = className;
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", label);
+    link.title = label;
+
+    var icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("aria-hidden", "true");
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", iconPath);
+    path.setAttribute("fill", iconStroke ? "none" : "currentColor");
+    if (iconStroke) {
+      path.setAttribute("stroke", "currentColor");
+      path.setAttribute("stroke-width", "1.8");
+      path.setAttribute("stroke-linecap", "round");
+      path.setAttribute("stroke-linejoin", "round");
+    }
+    icon.appendChild(path);
+    link.appendChild(icon);
+    document.body.appendChild(link);
+  }
+
+  function addFloatingSocialButtons() {
+    addFloatingSocialButton(
+      "tiktok",
+      "https://www.tiktok.com/@veltrixo0o?_r=1&_t=ZS-9AY8Oka8gbt",
+      "Follow DK Game Center on TikTok",
+      "M19.6 7.2a5.7 5.7 0 0 1-3.5-1.2v8.1a6.1 6.1 0 1 1-5.2-6.1v3.3a2.8 2.8 0 1 0 1.9 2.7V2h3.3a5.7 5.7 0 0 0 3.5 3.3v1.9z",
+      false
+    );
+    addFloatingSocialButton(
+      "instagram",
+      "https://instagram.com/dkgame_center?dlrf=MWJhcjdjaGRhcXVmcg%3D%3D",
+      "Follow DK Game Center on Instagram",
+      "M7 2.9h10A4.1 4.1 0 0 1 21.1 7v10a4.1 4.1 0 0 1-4.1 4.1H7A4.1 4.1 0 0 1 2.9 17V7A4.1 4.1 0 0 1 7 2.9zm0 1.8A2.3 2.3 0 0 0 4.7 7v10A2.3 2.3 0 0 0 7 19.3h10a2.3 2.3 0 0 0 2.3-2.3V7A2.3 2.3 0 0 0 17 4.7H7zm5 2.1a5.2 5.2 0 1 1 0 10.4 5.2 5.2 0 0 1 0-10.4zm0 1.8a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm5.4-3a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z",
+      true
+    );
+  }
+
   function readCart() {
     try {
       var value = window.localStorage.getItem(cartStorageKey);
@@ -161,17 +206,6 @@
     } catch (error) {
       console.error("Could not read the saved cart.", error);
       return [];
-    }
-  }
-
-  function clearCartOnReload() {
-    var navigation = window.performance.getEntriesByType("navigation")[0];
-    if (!navigation || navigation.type !== "reload") return;
-    try {
-      window.localStorage.removeItem(cartStorageKey);
-    } catch (error) {
-      console.error("Could not clear the cart after refresh.", error);
-      showCartNotice("The saved cart could not be cleared after refresh.");
     }
   }
 
@@ -562,7 +596,7 @@
   function wireSearchForms() {
     document.addEventListener("mousedown", function (event) {
       var target = event.target instanceof Element ? event.target : null;
-      if (target && target.closest(".local-quick-result, .local-quick-result__all")) {
+      if (target && target.closest(".local-quick-result")) {
         event.preventDefault();
       }
     }, true);
@@ -577,7 +611,7 @@
 
     document.addEventListener("click", function (event) {
       var target = event.target instanceof Element ? event.target : null;
-      var resultLink = target && target.closest(".local-quick-result, .local-quick-result__all");
+      var resultLink = target && target.closest(".local-quick-result");
       if (!resultLink || event.button !== 0 || event.metaKey || event.ctrlKey ||
           event.shiftKey || event.altKey) return;
       event.preventDefault();
@@ -617,7 +651,7 @@
           wiredSearchResultLists.add(resultsInner);
           new MutationObserver(function () {
             if (input.value.trim() &&
-                !resultsInner.querySelector(".local-quick-result, .local-quick-result__empty, .local-quick-result__all")) {
+                !resultsInner.querySelector(".local-quick-result, .local-quick-result__empty")) {
               renderQuickResults(activeProducts, input.form, input.value);
             }
           }).observe(resultsInner, { childList: true });
@@ -681,11 +715,6 @@
       resultsInner.appendChild(empty);
     }
 
-    var allResults = document.createElement("a");
-    allResults.className = "local-quick-result__all";
-    allResults.href = siteUrl("search.html") + "?q=" + encodeURIComponent(query.trim());
-    allResults.textContent = "View all search results";
-    resultsInner.appendChild(allResults);
     results.setAttribute("aria-hidden", "false");
   }
 
@@ -729,7 +758,6 @@
       ".local-quick-result__info{display:flex;flex:1;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}",
       ".local-quick-result__title{max-width:100%;font-weight:600;overflow-wrap:anywhere}",
       ".local-quick-result__price{color:#db0000;font-weight:700;white-space:nowrap}",
-      ".local-quick-result__all{display:block;padding:12px;text-align:center;color:#db0000;font-weight:600}",
       ".local-quick-result__empty{padding:12px}",
       ".local-search-empty{padding:24px 0}",
       ".local-product-detail{max-width:1100px;margin:40px auto;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,1fr);gap:40px}",
@@ -775,12 +803,19 @@
       ".local-whatsapp-float:hover{transform:scale(1.07);background:#1fbd5b}",
       ".local-whatsapp-float:focus-visible{outline:3px solid #1e2d7d;outline-offset:3px}",
       ".local-whatsapp-float svg{width:34px;height:34px}",
+      ".local-social-float{position:fixed;z-index:100000;right:20px;display:flex;width:58px;height:58px;align-items:center;justify-content:center;border-radius:50%;color:#fff;box-shadow:0 3px 12px #0004;text-decoration:none;transition:transform .2s,filter .2s}",
+      ".local-social-float:hover{transform:scale(1.07);filter:brightness(.92)}",
+      ".local-social-float:focus-visible{outline:3px solid #1e2d7d;outline-offset:3px}",
+      ".local-social-float svg{width:30px;height:30px}",
+      ".local-social-float--instagram{bottom:88px;background:radial-gradient(circle at 30% 110%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}",
+      ".local-social-float--tiktok{bottom:156px;background:#111}",
       ".local-cart-notice{position:fixed;z-index:99999;right:18px;bottom:18px;max-width:min(420px,calc(100vw - 36px));padding:14px 18px;background:#1e2d7d;color:#fff;box-shadow:0 4px 16px #0003;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s}",
       ".local-cart-notice.is-visible{opacity:1;transform:translateY(0)}",
       "@media(max-width:640px){.local-product-detail{grid-template-columns:1fr;margin:16px auto;padding:16px}.local-product-card img{height:150px}.local-cart{padding:14px}.local-cart__item{align-items:flex-start;gap:10px}.local-cart__item>img{width:64px;height:64px}.local-cart__details{grid-template-columns:minmax(0,1fr);gap:8px}.local-cart__line-total{justify-self:start}.local-cart__actions{flex-wrap:wrap;justify-content:flex-start}.local-mini-cart__item{padding:10px}.local-mini-cart__product{gap:8px}.local-mini-cart__product img{width:44px;height:44px}}"
     ].join("");
     style.textContent += "@media(max-width:640px){.local-cart{margin:16px auto;padding:16px}.local-cart__item{align-items:flex-start;gap:12px}.local-cart__item>img{width:64px;height:64px}.local-cart__details{grid-template-columns:1fr;gap:10px}.local-cart__line-total{justify-self:start}.local-cart__summary{max-width:none}.local-cart__actions{flex-wrap:wrap}}";
     style.textContent += "@media(max-width:640px){.local-whatsapp-float{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:54px;height:54px}.local-whatsapp-float svg{width:31px;height:31px}}";
+    style.textContent += "@media(max-width:640px){.local-social-float{right:16px;width:54px;height:54px}.local-social-float--instagram{bottom:calc(84px + env(safe-area-inset-bottom))}.local-social-float--tiktok{bottom:calc(148px + env(safe-area-inset-bottom))}.local-social-float svg{width:28px;height:28px}}";
     document.head.appendChild(style);
   }
 
@@ -992,7 +1027,11 @@
     wireSearchForms();
     wireCartControls();
     addFloatingWhatsAppButton();
-    clearCartOnReload();
+    addFloatingSocialButtons();
+    updateCartCount(readCart());
+    window.addEventListener("pageshow", function () {
+      updateCartCount(readCart());
+    });
     try {
       var products = await loadProducts();
       activeProducts = products;
