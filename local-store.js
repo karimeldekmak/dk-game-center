@@ -6,11 +6,22 @@
   var activeProducts = [];
   var wiredSearchInputs = new WeakSet();
   var wiredSearchResultLists = new WeakSet();
+  var scriptUrl = document.currentScript && document.currentScript.src;
+  var siteRoot = new URL(".", scriptUrl || window.location.href);
+
+  function siteUrl(path) {
+    return new URL(String(path).replace(/^\/+/, ""), siteRoot).href;
+  }
+
+  function sitePath(path) {
+    return new URL(String(path).replace(/^\/+/, ""), siteRoot).pathname;
+  }
 
   function productPath(link) {
     if (!link) return "";
     var url = new URL(link.getAttribute("href"), window.location.href);
-    var path = url.pathname === "/product.html" ? url.searchParams.get("url") : url.pathname;
+    var isProductLink = url.pathname === sitePath("product.html") || url.pathname === sitePath("index.html");
+    var path = isProductLink ? url.searchParams.get("url") : url.pathname;
     var productsIndex = path ? path.indexOf("/products/") : -1;
     if (productsIndex > 0) path = path.slice(productsIndex);
     return path && path.indexOf("/products/") === 0 ? path : "";
@@ -79,7 +90,7 @@
 
   async function loadProducts() {
     var products = mergeProducts(storedProducts(), readProducts(document));
-    var response = await fetch("/product-catalog.json?v=20261016-4", { credentials: "same-origin" });
+    var response = await fetch(siteUrl("product-catalog.json?v=20261016-4"), { credentials: "same-origin" });
     if (!response.ok) throw new Error("Product catalog request failed: " + response.status);
     var catalog = await response.json();
     if (!Array.isArray(catalog)) throw new Error("Product catalog has an invalid format.");
@@ -89,7 +100,7 @@
   }
 
   function productLink(product) {
-    return "/product.html?url=" + encodeURIComponent(product.path);
+    return siteUrl("index.html?url=" + encodeURIComponent(product.path));
   }
 
   function whatsAppOrderLink(cart) {
@@ -194,7 +205,7 @@
       empty.className = "local-mini-cart__empty";
       empty.textContent = "Your cart is empty";
       var shop = document.createElement("a");
-      shop.href = "/";
+      shop.href = siteUrl("");
       shop.className = "button button--primary button--full";
       shop.textContent = "Shop our products";
       content.append(empty, shop);
@@ -375,7 +386,7 @@
         if (item.quantity > 1) item.quantity -= 1;
         saveCart(cart);
       }
-      if (window.location.pathname === "/cart") renderCart();
+      if (window.location.pathname === sitePath("cart.html")) renderCart();
     }, true);
 
     document.addEventListener("change", function (event) {
@@ -437,7 +448,7 @@
       empty.textContent = "Your cart is empty.";
       var shop = document.createElement("a");
       shop.className = "local-cart__button";
-      shop.href = "/";
+      shop.href = siteUrl("");
       shop.textContent = "Continue shopping";
       section.append(empty, shop);
       main.appendChild(section);
@@ -517,7 +528,7 @@
     actions.className = "local-cart__actions";
     var continueLink = document.createElement("a");
     continueLink.className = "local-cart__button local-cart__button--secondary";
-    continueLink.href = "/";
+    continueLink.href = siteUrl("");
     continueLink.textContent = "Continue shopping";
     var clear = document.createElement("button");
     clear.type = "button";
@@ -538,7 +549,7 @@
       if (input) input.focus();
       return;
     }
-    window.location.assign("/search?q=" + encodeURIComponent(query));
+    window.location.assign(siteUrl("search.html") + "?q=" + encodeURIComponent(query));
   }
 
   function wireSearchForms() {
@@ -665,7 +676,7 @@
 
     var allResults = document.createElement("a");
     allResults.className = "local-quick-result__all";
-    allResults.href = "/search?q=" + encodeURIComponent(query.trim());
+    allResults.href = siteUrl("search.html") + "?q=" + encodeURIComponent(query.trim());
     allResults.textContent = "View all search results";
     resultsInner.appendChild(allResults);
     results.setAttribute("aria-hidden", "false");
@@ -680,7 +691,7 @@
 
   function addStyles() {
     if (document.getElementById("local-store-styles")) return;
-    if (window.location.pathname === "/search") {
+    if (window.location.pathname === sitePath("search.html")) {
       document.documentElement.classList.add("local-search-page");
     }
     var style = document.createElement("style");
@@ -853,7 +864,7 @@
     }
 
     try {
-      var response = await fetch(path, { credentials: "same-origin" });
+      var response = await fetch(siteUrl(path), { credentials: "same-origin" });
       if (response.ok) {
         var productPage = new DOMParser().parseFromString(await response.text(), "text/html");
         var description = productPage.querySelector(".product-block-list__item--description .rte");
@@ -892,7 +903,7 @@
     main.replaceChildren();
     var back = document.createElement("a");
     back.className = "local-product-detail__back";
-    back.href = "/";
+    back.href = siteUrl("");
     back.textContent = "Back to shopping";
     main.appendChild(back);
 
@@ -938,11 +949,13 @@
       document.querySelectorAll(".search-bar input[name='q']").forEach(function (input) {
         if (input.value.trim()) renderQuickResults(activeProducts, input.form, input.value);
       });
-      if (window.location.pathname === "/cart") {
+      if (window.location.pathname === sitePath("cart.html")) {
         renderCart();
-      } else if (window.location.pathname === "/search") {
+      } else if (window.location.pathname === sitePath("search.html")) {
         renderSearch(products);
-      } else if (window.location.pathname === "/product.html") {
+      } else if (window.location.pathname === sitePath("product.html") ||
+        (window.location.pathname === sitePath("index.html") &&
+          new URLSearchParams(window.location.search).has("url"))) {
         await renderProduct(products);
       }
     } catch (error) {
