@@ -22,6 +22,40 @@
       window.location.pathname === sitePath(path + ".html");
   }
 
+  function normalizeSearchText(value) {
+    return String(value || "")
+      .toLocaleLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^\p{L}\p{N}]+/gu, "");
+  }
+
+  function priceDetails(product) {
+    var price = String(product.price || "");
+    var values = price.match(/\$\s*[\d,]+(?:\.\d{1,2})?/g) || [];
+    var current = values.length > 1 ? values[0] : price;
+    var compareAt = product.compareAtPrice || (values.length > 1 ? values[1] : "");
+    if (compareAt && priceAmount(compareAt) <= priceAmount(current)) compareAt = "";
+    return { current: current, compareAt: compareAt };
+  }
+
+  function priceDisplay(product, className) {
+    var details = priceDetails(product);
+    var price = document.createElement("span");
+    price.className = className + " local-price";
+    var current = document.createElement("span");
+    current.className = "local-price__current";
+    current.textContent = details.current;
+    price.appendChild(current);
+    if (details.compareAt) {
+      var compareAt = document.createElement("del");
+      compareAt.className = "local-price__compare";
+      compareAt.textContent = details.compareAt;
+      price.appendChild(compareAt);
+    }
+    return price;
+  }
+
   function productPath(link) {
     if (!link) return "";
     var url = new URL(link.getAttribute("href"), window.location.href);
@@ -39,13 +73,23 @@
       var path = productPath(titleLink) || productPath(imageLink);
       var price = card.querySelector(".product-item__price-list");
       var priceText = "";
+      var compareAtPrice = "";
 
       if (price) {
-        var priceCopy = price.cloneNode(true);
-        priceCopy.querySelectorAll(".visually-hidden").forEach(function (node) {
+        var currentPrice = price.querySelector(".price--highlight");
+        var comparePrice = price.querySelector(".price--compare");
+        var currentCopy = (currentPrice || price).cloneNode(true);
+        currentCopy.querySelectorAll(".visually-hidden").forEach(function (node) {
           node.remove();
         });
-        priceText = priceCopy.textContent.replace(/\s+/g, " ").trim();
+        priceText = currentCopy.textContent.replace(/\s+/g, " ").trim();
+        if (comparePrice) {
+          var compareCopy = comparePrice.cloneNode(true);
+          compareCopy.querySelectorAll(".visually-hidden").forEach(function (node) {
+            node.remove();
+          });
+          compareAtPrice = compareCopy.textContent.replace(/\s+/g, " ").trim();
+        }
       }
 
       var image = card.querySelector("img");
@@ -60,6 +104,7 @@
         path: path,
         title: titleLink.textContent.trim(),
         price: priceText || "Price unavailable",
+        compareAtPrice: compareAtPrice,
         image: imageSource || "",
         description: ""
       };
@@ -95,7 +140,7 @@
 
   async function loadProducts() {
     var products = mergeProducts(storedProducts(), readProducts(document));
-    var response = await fetch(siteUrl("product-catalog.json?v=20261016-4"), { credentials: "same-origin" });
+    var response = await fetch(siteUrl("product-catalog.json?v=20261022-1"), { credentials: "same-origin" });
     if (!response.ok) throw new Error("Product catalog request failed: " + response.status);
     var catalog = await response.json();
     if (!Array.isArray(catalog)) throw new Error("Product catalog has an invalid format.");
@@ -116,7 +161,7 @@
       return "- " + item.title + " (Qty: " + item.quantity + ") — " + item.price +
         " each, line total " + formatTotal(lineTotal);
     });
-    var message = "Hello! I would like to order:\n" + lines.join("\n") +
+    var message = "Hello! I would like to order from Game Target:\n" + lines.join("\n") +
       "\nSubtotal: " + formatTotal(subtotal) +
       "\nPlease confirm availability and delivery details.";
     var link = document.createElement("a");
@@ -181,14 +226,14 @@
     addFloatingSocialButton(
       "tiktok",
       "https://www.tiktok.com/@veltrixo0o?_r=1&_t=ZS-9AY8Oka8gbt",
-      "Follow DK Game Center on TikTok",
+      "Follow Game Target on TikTok",
       "M19.6 7.2a5.7 5.7 0 0 1-3.5-1.2v8.1a6.1 6.1 0 1 1-5.2-6.1v3.3a2.8 2.8 0 1 0 1.9 2.7V2h3.3a5.7 5.7 0 0 0 3.5 3.3v1.9z",
       false
     );
     addFloatingSocialButton(
       "instagram",
       "https://instagram.com/dkgame_center?dlrf=MWJhcjdjaGRhcXVmcg%3D%3D",
-      "Follow DK Game Center on Instagram",
+      "Follow Game Target on Instagram",
       "M7 2.9h10A4.1 4.1 0 0 1 21.1 7v10a4.1 4.1 0 0 1-4.1 4.1H7A4.1 4.1 0 0 1 2.9 17V7A4.1 4.1 0 0 1 7 2.9zm0 1.8A2.3 2.3 0 0 0 4.7 7v10A2.3 2.3 0 0 0 7 19.3h10a2.3 2.3 0 0 0 2.3-2.3V7A2.3 2.3 0 0 0 17 4.7H7zm5 2.1a5.2 5.2 0 1 1 0 10.4 5.2 5.2 0 0 1 0-10.4zm0 1.8a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm5.4-3a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z",
       true
     );
@@ -274,9 +319,10 @@
       details.className = "local-mini-cart__details";
       var title = document.createElement("strong");
       title.textContent = item.title;
-      var info = document.createElement("span");
-      info.textContent = item.quantity + " × " + item.price;
-      details.append(title, info);
+      var quantity = document.createElement("span");
+      quantity.textContent = item.quantity + " ×";
+      var price = priceDisplay(item, "local-mini-cart__price");
+      details.append(title, quantity, price);
       product.appendChild(details);
       var remove = document.createElement("button");
       remove.type = "button";
@@ -328,12 +374,14 @@
       existing.quantity += amount;
       existing.title = product.title;
       existing.price = product.price;
+      existing.compareAtPrice = product.compareAtPrice || "";
       existing.image = product.image || existing.image || "";
     } else {
       cart.push({
         path: product.path,
         title: product.title,
         price: product.price,
+        compareAtPrice: product.compareAtPrice || "",
         image: product.image || "",
         quantity: amount
       });
@@ -347,7 +395,6 @@
     button.className = className;
     button.dataset.localAdd = product.path;
     button.textContent = "Add to cart";
-    button.style.setProperty("transition", "none", "important");
     container.appendChild(button);
     return button;
   }
@@ -368,7 +415,6 @@
         addButton.classList.add("local-add-to-cart");
         addButton.dataset.localAdd = product.path;
         addButton.textContent = "Add to cart";
-        addButton.style.setProperty("transition", "none", "important");
       } else if (product) {
         var info = card.querySelector(".product-item__info-inner") || card.querySelector(".product-item__info");
         if (info && !info.querySelector("[data-local-add]")) {
@@ -519,8 +565,7 @@
       var name = document.createElement("a");
       name.href = productLink(item);
       name.textContent = item.title;
-      var price = document.createElement("p");
-      price.textContent = item.price;
+      var price = priceDisplay(item, "local-cart__price");
       details.append(name, price);
       var controls = document.createElement("div");
       controls.className = "local-cart__controls";
@@ -672,7 +717,7 @@
     var resultsInner = form.querySelector(".search-bar__results-inner");
     if (!results || !resultsInner) return;
 
-    var terms = query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+    var terms = query.trim().split(/\s+/).map(normalizeSearchText).filter(Boolean);
     resultsInner.replaceChildren();
     if (!terms.length) {
       results.setAttribute("aria-hidden", "true");
@@ -680,7 +725,7 @@
     }
 
     var matches = products.filter(function (product) {
-      var text = (product.title + " " + product.path).toLocaleLowerCase();
+      var text = normalizeSearchText(product.title + " " + product.path);
       return terms.every(function (term) { return text.indexOf(term) !== -1; });
     }).slice(0, 6);
 
@@ -700,9 +745,7 @@
       var title = document.createElement("span");
       title.className = "local-quick-result__title";
       title.textContent = product.title;
-      var price = document.createElement("span");
-      price.className = "local-quick-result__price";
-      price.textContent = product.price;
+      var price = priceDisplay(product, "local-quick-result__price");
       info.append(title, price);
       link.appendChild(info);
       resultsInner.appendChild(link);
@@ -747,22 +790,26 @@
       ".local-product-card__link{display:flex;flex:1;flex-direction:column;color:inherit;text-decoration:none}",
       ".local-product-card img{width:100%;height:190px;object-fit:contain}",
       ".local-product-card__title{display:block;margin:10px 0;font-weight:600}",
-      ".local-product-card__price{display:block;color:#db0000;font-weight:700}",
-      ".local-add-to-cart{display:block;width:100%;margin-top:10px;padding:11px 14px;border:0;background:#1e2d7d;color:#fff;font:inherit;font-weight:600;cursor:pointer;transition:none!important}",
-      ".local-add-to-cart:hover{background:#17235f;color:#fff}",
-      "button.local-add-to-cart,button.product-item__action-button.local-add-to-cart{background:#1e2d7d!important;border-color:#1e2d7d!important;color:#fff!important}",
-      "button.local-add-to-cart:hover,button.product-item__action-button.local-add-to-cart:hover{background:#17235f!important;border-color:#17235f!important;color:#fff!important}",
+      ".local-product-card__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;color:#db0000;font-weight:700}",
+      ".local-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}",
+      ".local-price__current{color:#db0000;font-weight:700}",
+      ".local-price__compare{color:#85858e;font-size:.88em;font-weight:400;text-decoration:line-through;text-decoration-thickness:1.5px}",
+      ".price--compare{color:#85858e!important;text-decoration:line-through;text-decoration-thickness:1.5px}",
+      ".local-add-to-cart{display:block;width:100%;margin-top:10px;padding:11px 14px;min-height:46px;border:1px solid #38d9ff!important;border-radius:6px;background:linear-gradient(110deg,#14205d 0%,#204ac1 52%,#087eae 100%)!important;color:#fff!important;font:inherit;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 1px 0 #ffffff2e,0 0 14px #1e90ff3d;transition:background 180ms ease,border-color 180ms ease,box-shadow 180ms ease,transform 180ms ease!important}",
+      ".local-add-to-cart:hover:not(:disabled){border-color:#9af0ff!important;background:linear-gradient(110deg,#1a2b78 0%,#2862eb 52%,#079fcf 100%)!important;color:#fff!important;box-shadow:inset 0 1px 0 #ffffff3d,0 0 22px #1ea6ff8c;transform:translateY(-2px)}",
+      ".local-add-to-cart:active:not(:disabled){transform:translateY(0);box-shadow:inset 0 2px 6px #0005,0 0 10px #1ea6ff52}",
+      ".local-add-to-cart:disabled{border-color:#3a3a42!important;background:#27272c!important;color:#a7a7af!important;box-shadow:none;transform:none;cursor:not-allowed}",
       ".local-quick-result{box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:10px;border-bottom:1px solid #e1e3e4;color:inherit;text-decoration:none}",
       ".local-quick-result:hover{background:#f3f5f6}",
       ".local-quick-result img{width:52px;height:52px;object-fit:contain;flex:none}",
       ".local-quick-result__info{display:flex;flex:1;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}",
       ".local-quick-result__title{max-width:100%;font-weight:600;overflow-wrap:anywhere}",
-      ".local-quick-result__price{color:#db0000;font-weight:700;white-space:nowrap}",
+      ".local-quick-result__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px;color:#db0000;font-weight:700}",
       ".local-quick-result__empty{padding:12px}",
       ".local-search-empty{padding:24px 0}",
       ".local-product-detail{max-width:1100px;margin:40px auto;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,1fr);gap:40px}",
       ".local-product-detail img{display:block;width:100%;max-height:600px;object-fit:contain}",
-      ".local-product-detail__price{font-size:24px;font-weight:700;color:#db0000}",
+      ".local-product-detail__price{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 10px;margin:12px 0;font-size:24px;font-weight:700;color:#db0000}",
       ".local-product-detail__description{line-height:1.7}",
       ".local-product-detail__back{display:inline-block;margin:24px}",
       ".local-cart{max-width:900px;margin:36px auto;padding:20px}",
@@ -773,6 +820,7 @@
       ".local-cart__details{display:grid;flex:1;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 20px}",
       ".local-cart__details>a{color:#1e2d7d;font-weight:600}",
       ".local-cart__details p{margin:4px 0 0}",
+      ".local-cart__price{grid-column:1/-1;margin:4px 0 0}",
       ".local-cart__controls{display:flex;align-items:center;gap:8px}",
       ".local-cart__controls button,.local-cart__controls input{box-sizing:border-box;width:38px;height:36px;text-align:center}",
       ".local-cart__controls button{border:1px solid #d4d6d8;background:#fff;cursor:pointer;font-size:20px}",
@@ -791,6 +839,7 @@
       ".local-mini-cart__empty{margin:16px;text-align:center}",
       ".local-mini-cart__items{max-height:300px;overflow:auto}",
       ".local-mini-cart__item{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #e1e3e4}",
+      ".local-mini-cart__price{display:inline-flex;align-items:baseline;gap:0 6px;flex-wrap:wrap}",
       ".local-mini-cart__product{display:flex;flex:1;min-width:0;align-items:center;gap:12px;color:inherit;text-decoration:none}",
       ".local-mini-cart__product img{width:54px;height:54px;object-fit:contain;flex:none}",
       ".local-mini-cart__details{display:flex;min-width:0;flex-direction:column;gap:4px}",
@@ -821,20 +870,20 @@
 
   function renderSearch(products) {
     var query = new URLSearchParams(window.location.search).get("q") || "";
-    var normalizedQuery = query.trim().toLocaleLowerCase();
-    var searchTerms = normalizedQuery.split(/\s+/).filter(Boolean);
+    var normalizedQuery = normalizeSearchText(query);
+    var searchTerms = query.trim().split(/\s+/).map(normalizeSearchText).filter(Boolean);
     document.querySelectorAll(".search-bar input[name='q']").forEach(function (input) {
       input.value = query;
     });
     var matches = normalizedQuery ? products.filter(function (product) {
-      var searchableText = (product.title + " " + product.path).toLocaleLowerCase();
+      var searchableText = normalizeSearchText(product.title + " " + product.path);
       return searchTerms.every(function (term) {
         return searchableText.indexOf(term) !== -1;
       });
     }) : [];
     matches.sort(function (first, second) {
-      var firstTitle = first.title.toLocaleLowerCase();
-      var secondTitle = second.title.toLocaleLowerCase();
+      var firstTitle = normalizeSearchText(first.title);
+      var secondTitle = normalizeSearchText(second.title);
       var firstStarts = firstTitle.indexOf(normalizedQuery) === 0 ? 0 : 1;
       var secondStarts = secondTitle.indexOf(normalizedQuery) === 0 ? 0 : 1;
       return firstStarts - secondStarts || firstTitle.localeCompare(secondTitle);
@@ -884,9 +933,7 @@
         var title = document.createElement("span");
         title.className = "local-product-card__title";
         title.textContent = product.title;
-        var price = document.createElement("span");
-        price.className = "local-product-card__price";
-        price.textContent = product.price;
+        var price = priceDisplay(product, "local-product-card__price");
         link.append(title, price);
         card.appendChild(link);
         addCartButton(card, product, "local-add-to-cart");
@@ -931,7 +978,7 @@
       }
     }
     main.appendChild(section);
-    document.title = normalizedQuery ? "Search: " + query.trim() + " | DK Game Center" : "Search | DK Game Center";
+    document.title = normalizedQuery ? "Search: " + query.trim() + " | Game Target" : "Search | Game Target";
   }
 
   async function renderProduct(products) {
@@ -958,6 +1005,7 @@
         var description = productPage.querySelector(".product-block-list__item--description .rte");
         var actualTitle = productPage.querySelector(".product-meta__title");
         var price = productPage.querySelector(".product-form__info-content .price");
+        var comparePrice = productPage.querySelector(".product-form__info-content .price--compare");
         var image = productPage.querySelector("meta[property='og:image']");
         if (!product) {
           product = {
@@ -976,6 +1024,13 @@
             node.remove();
           });
           product.price = priceCopy.textContent.replace(/\s+/g, " ").trim();
+        }
+        if (comparePrice) {
+          var compareCopy = comparePrice.cloneNode(true);
+          compareCopy.querySelectorAll(".visually-hidden").forEach(function (node) {
+            node.remove();
+          });
+          product.compareAtPrice = compareCopy.textContent.replace(/\s+/g, " ").trim();
         }
         if (!product.image && image) product.image = image.content;
       }
@@ -1006,9 +1061,7 @@
     var info = document.createElement("div");
     var title = document.createElement("h1");
     title.textContent = product.title;
-    var price = document.createElement("p");
-    price.className = "local-product-detail__price";
-    price.textContent = product.price;
+    var price = priceDisplay(product, "local-product-detail__price");
     info.append(title, price);
     if (product.description) {
       var description = document.createElement("p");
@@ -1019,7 +1072,7 @@
     addCartButton(info, product, "local-add-to-cart");
     detail.appendChild(info);
     main.appendChild(detail);
-    document.title = product.title + " | DK Game Center";
+    document.title = product.title + " | Game Target";
   }
 
   async function initialize() {
