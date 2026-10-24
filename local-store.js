@@ -17,6 +17,15 @@
     return new URL(String(path).replace(/^\/+/, ""), siteRoot).pathname;
   }
 
+  function siteRelativePath() {
+    var pathname = window.location.pathname;
+    var rootPath = siteRoot.pathname;
+    if (rootPath !== "/" && pathname.indexOf(rootPath) === 0) {
+      pathname = "/" + pathname.slice(rootPath.length);
+    }
+    return pathname || "/";
+  }
+
   function isSitePage(path) {
     return window.location.pathname === sitePath(path) ||
       window.location.pathname === sitePath(path + ".html");
@@ -510,7 +519,7 @@
   }
 
   function productFromForm(form) {
-    var path = window.location.pathname;
+    var path = siteRelativePath();
     var product = activeProducts.find(function (item) { return item.path === path; });
     var title = document.querySelector(".product-meta__title");
     var price = document.querySelector(".product-form__info-content .price");
@@ -566,7 +575,7 @@
 
   function prepareProductForm() {
     var form = document.querySelector(".product-form");
-    if (!form || window.location.pathname.indexOf("/products/") !== 0) return;
+    if (!form || siteRelativePath().indexOf("/products/") !== 0) return;
     var product = productFromForm(form);
     var button = form.querySelector("[data-action='add-to-cart']");
     if (product && button) {
